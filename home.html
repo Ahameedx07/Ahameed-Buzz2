@@ -80,12 +80,12 @@
 
     if (snap.exists()) {
       const data = snap.data();
-      document.getElementById("username").textContent = data.username || "user_" + user.uid.slice(-5);
+      document.getElementById("username").textContent = data.username ?? user.email.split('@')[0];
       document.getElementById("balance").textContent = (data.balance || 0).toFixed(2);
-      document.getElementById("uid").textContent = data.uidNumber || "N/A";
+      document.getElementById("uid").textContent = data.uidNumber ?? user.uid.slice(-5);
     } else {
       document.getElementById("username").textContent = user.email;
-      document.getElementById("uid").textContent = "N/A";
+      document.getElementById("uid").textContent = user.uid.slice(-5);
     }
   });
 </script>
